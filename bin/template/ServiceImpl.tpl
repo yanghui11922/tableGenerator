@@ -34,28 +34,28 @@ public class ${classdef}Service {
 	private Read${classdef}Mapper ReadMapper;
  
 
-	@CachePut(key="'${classdef}_'+#p0.ID")  
+	@CachePut(key="#p0.ID")  
 	@CacheEvict(value = "Read${classdef}Cache",allEntries = true)
 	public ${classdef} insert(${classdef} obj){
 		WriteMapper.insert(obj);
 		return ReadMapper.findById(obj.getID());
 	}
 
-	@CachePut(key="'${classdef}_'+#p0.ID")  
+	@CachePut(key="#p0.ID")  
 	@CacheEvict(value = "Read${classdef}Cache",allEntries = true)
 	public ${classdef} update(${classdef} obj){
 		WriteMapper.update(obj);
 		return ReadMapper.findById(obj.getID());
 	}
 
-	@CachePut(key="'${classdef}_'+#p0")  
+	@CachePut(key="#p0")  
 	@CacheEvict(value = "Read${classdef}Cache",allEntries = true)
 	public ${classdef} deleteById(String id){
 		WriteMapper.deleteById(id);
 		return ReadMapper.findById(id);
 	}
 
-	@CachePut(key="'${classdef}_'+#p0")  
+	@CachePut(key="#p0")  
 	@CacheEvict(value = "Read${classdef}Cache",allEntries = true)
 	public ${classdef} recoverByID(String id){
 		WriteMapper.recoverByID(id);
