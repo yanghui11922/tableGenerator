@@ -177,6 +177,7 @@ public class SqlMapGenerator {
         rootMap.put("insertValueSql", getInsertValueSql(tableInfo));
         rootMap.put("updateSql", getUpdateSql(tableInfo));
         rootMap.put("conditionSql", getConditionSql(tableInfo));
+        rootMap.put("conditionSearchSql", getConditionSearchSql(tableInfo));
         rootMap.put("conditionSqlByID", getConditionSqlByID(tableInfo));
         rootMap.put("conditionStatus", Status);
         rootMap.put("conditionID", ID+"= #{ID}");
@@ -288,9 +289,17 @@ public class SqlMapGenerator {
                     + tableInfoBean.getColumnName().split("_")[1] + "}\r\n";
             whereSql += "</if>\r\n";
         }
-
         return whereSql;
     }
+    
+    private static String getConditionSearchSql(Entry <String, List <TableInfoBean>> tableInfo) {
+        String whereSql = "";
+        for (TableInfoBean tableInfoBean : tableInfo.getValue()) {
+        		whereSql+= tableInfoBean.getColumnName() +" like CONCAT(CONCAT('%', #{search,jdbcType=VARCHAR}),'%') or \r\n\t\t\t\t";
+        }
+        return whereSql;
+    }
+    
     private static String getConditionSqlByID(Entry <String, List <TableInfoBean>> tableInfo) {
 
         String whereSql = "";

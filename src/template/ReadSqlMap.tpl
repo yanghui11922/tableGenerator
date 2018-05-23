@@ -16,6 +16,13 @@
 	<sql id="where">
 		1=1 
 		${conditionSql}
+		<!-- 这边要数据自己处理 -->
+		<if test="search != null">
+			and (
+				${conditionSearchSql}
+				1 != 1
+			)
+		</if>
 	</sql>
 	<!-- 根据ID 查找-->
 	<select id="findById" resultMap="${tblName}" parameterType="long">

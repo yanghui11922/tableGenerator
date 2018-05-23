@@ -53,6 +53,9 @@ public class ReadRole1Service {
 	@Cacheable(keyGenerator = "keyGenerator")
 	public PageInfo<Role1> queryPage(Map<String,Object> queryMap, int pageNum, int pageSize){
 		Page<Role1> page = PageHelper.startPage(pageNum, pageSize);
+		if(pageSize==0){//当pageSize=0时查询全部的东西
+			page.setPageSizeZero(true);
+		}
 		page.setOrderBy("Role1_CreateTime desc");
 		ReadMapper.query(queryMap);
 		return page.toPageInfo();

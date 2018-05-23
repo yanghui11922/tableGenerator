@@ -37,6 +37,19 @@
 				 and Role1_AdminID = #{AdminID}
 </if>
 
+		<!-- 这边要数据自己处理 -->
+		<if test="search != null">
+			and (
+				Role1_ID like CONCAT(CONCAT('%', #{search,jdbcType=VARCHAR}),'%') or 
+				Role1_CreateTime like CONCAT(CONCAT('%', #{search,jdbcType=VARCHAR}),'%') or 
+				Role1_ModifyTime like CONCAT(CONCAT('%', #{search,jdbcType=VARCHAR}),'%') or 
+				Role1_Status like CONCAT(CONCAT('%', #{search,jdbcType=VARCHAR}),'%') or 
+				Role1_Name like CONCAT(CONCAT('%', #{search,jdbcType=VARCHAR}),'%') or 
+				Role1_AdminID like CONCAT(CONCAT('%', #{search,jdbcType=VARCHAR}),'%') or 
+				
+				1 != 1
+			)
+		</if>
 	</sql>
 	<!-- 根据ID 查找-->
 	<select id="findById" resultMap="role1" parameterType="long">
