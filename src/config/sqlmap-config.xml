@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMapConfig PUBLIC
+  "-//iBATIS.com//DTD SQL Map Config 2.0//EN" "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+
+<!-- iBATIS -->
+<!-- ======================================================================================== -->
+<sqlMapConfig>
+    <settings useStatementNamespaces="true" />
+
+    <sqlMap
+		resource="com/base/db/dao/ibatis/SqlMap-Taccounts.xml" />
+    <sqlMap
+		resource="com/base/db/dao/ibatis/SqlMap-Tgames.xml" />
+    <sqlMap
+		resource="com/base/db/dao/ibatis/SqlMap-TgamesArchive.xml" />
+    <sqlMap
+		resource="com/base/db/dao/ibatis/SqlMap-Tguests.xml" />
+    <sqlMap
+		resource="com/base/db/dao/ibatis/SqlMap-Tmessage.xml" />
+    <sqlMap
+		resource="com/base/db/dao/ibatis/SqlMap-Trooms.xml" />
+    <sqlMap
+		resource="com/base/db/dao/ibatis/SqlMap-Tusers.xml" />
+    <sqlMap
+		resource="com/base/db/dao/ibatis/SqlMap-WtbApplylist.xml" />
+    <sqlMap
+		resource="com/base/db/dao/ibatis/SqlMap-WtbBaseinfo.xml" />
+    <sqlMap
+		resource="com/base/db/dao/ibatis/SqlMap-WtbFeedback.xml" />
+    <sqlMap
+		resource="com/base/db/dao/ibatis/SqlMap-WtbRegion.xml" />
+    <sqlMap
+		resource="com/base/db/dao/ibatis/SqlMap-WtbUsers.xml" />
+
+</sqlMapConfig>
+<!-- ======================================================================================== -->

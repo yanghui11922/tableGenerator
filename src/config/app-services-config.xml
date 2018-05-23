@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx" xmlns:flex="http://www.springframework.org/schema/flex"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+        http://www.springframework.org/schema/flex http://www.springframework.org/schema/flex/spring-flex-1.0.xsd">
+
+	<!-- Service -->
+	<!-- ======================================================================================== -->
+		<bean id="com.base.db.service.master.TaccountsServiceImpl" class="com.base.db.service.master.TaccountsServiceImpl">
+		<flex:remoting-destination />
+		<property name="dao"><ref bean="com.base.db.dao.master.TaccountsDao"/></property>
+	</bean>
+	<bean id="com.base.db.service.master.TgamesServiceImpl" class="com.base.db.service.master.TgamesServiceImpl">
+		<flex:remoting-destination />
+		<property name="dao"><ref bean="com.base.db.dao.master.TgamesDao"/></property>
+	</bean>
+	<bean id="com.base.db.service.master.TgamesArchiveServiceImpl" class="com.base.db.service.master.TgamesArchiveServiceImpl">
+		<flex:remoting-destination />
+		<property name="dao"><ref bean="com.base.db.dao.master.TgamesArchiveDao"/></property>
+	</bean>
+	<bean id="com.base.db.service.master.TguestsServiceImpl" class="com.base.db.service.master.TguestsServiceImpl">
+		<flex:remoting-destination />
+		<property name="dao"><ref bean="com.base.db.dao.master.TguestsDao"/></property>
+	</bean>
+	<bean id="com.base.db.service.master.TmessageServiceImpl" class="com.base.db.service.master.TmessageServiceImpl">
+		<flex:remoting-destination />
+		<property name="dao"><ref bean="com.base.db.dao.master.TmessageDao"/></property>
+	</bean>
+	<bean id="com.base.db.service.master.TroomsServiceImpl" class="com.base.db.service.master.TroomsServiceImpl">
+		<flex:remoting-destination />
+		<property name="dao"><ref bean="com.base.db.dao.master.TroomsDao"/></property>
+	</bean>
+	<bean id="com.base.db.service.master.TusersServiceImpl" class="com.base.db.service.master.TusersServiceImpl">
+		<flex:remoting-destination />
+		<property name="dao"><ref bean="com.base.db.dao.master.TusersDao"/></property>
+	</bean>
+	<bean id="com.base.db.service.master.WtbApplylistServiceImpl" class="com.base.db.service.master.WtbApplylistServiceImpl">
+		<flex:remoting-destination />
+		<property name="dao"><ref bean="com.base.db.dao.master.WtbApplylistDao"/></property>
+	</bean>
+	<bean id="com.base.db.service.master.WtbBaseinfoServiceImpl" class="com.base.db.service.master.WtbBaseinfoServiceImpl">
+		<flex:remoting-destination />
+		<property name="dao"><ref bean="com.base.db.dao.master.WtbBaseinfoDao"/></property>
+	</bean>
+	<bean id="com.base.db.service.master.WtbFeedbackServiceImpl" class="com.base.db.service.master.WtbFeedbackServiceImpl">
+		<flex:remoting-destination />
+		<property name="dao"><ref bean="com.base.db.dao.master.WtbFeedbackDao"/></property>
+	</bean>
+	<bean id="com.base.db.service.master.WtbRegionServiceImpl" class="com.base.db.service.master.WtbRegionServiceImpl">
+		<flex:remoting-destination />
+		<property name="dao"><ref bean="com.base.db.dao.master.WtbRegionDao"/></property>
+	</bean>
+	<bean id="com.base.db.service.master.WtbUsersServiceImpl" class="com.base.db.service.master.WtbUsersServiceImpl">
+		<flex:remoting-destination />
+		<property name="dao"><ref bean="com.base.db.dao.master.WtbUsersDao"/></property>
+	</bean>
+	<!-- ============== -->
+	<!-- ======================================================================================== -->
+
+	<!-- DAO -->
+	<!-- ======================================================================================== -->
+	<bean id="com.base.db.dao.master.TaccountsDao" class="org.springframework.aop.framework.ProxyFactoryBean" >
+        <property name="proxyInterfaces">
+            <value>com.base.dao.DaoIf</value>
+        </property>
+        <property name="target">
+            <ref local="com.base.db.dao.master.TaccountsDaoImpl"/>
+        </property>
+    </bean>
+    <bean id="com.base.db.dao.master.TaccountsDaoImpl" class="com.base.db.dao.master.TaccountsDaoImpl">
+        <property name="sqlMapClient"><ref bean="sqlMapClient"/></property>
+        <property name="dataSource"><ref bean="dataSource"/></property>
+    </bean>
+	<bean id="com.base.db.dao.master.TgamesDao" class="org.springframework.aop.framework.ProxyFactoryBean" >
+        <property name="proxyInterfaces">
+            <value>com.base.dao.DaoIf</value>
+        </property>
+        <property name="target">
+            <ref local="com.base.db.dao.master.TgamesDaoImpl"/>
+        </property>
+    </bean>
+    <bean id="com.base.db.dao.master.TgamesDaoImpl" class="com.base.db.dao.master.TgamesDaoImpl">
+        <property name="sqlMapClient"><ref bean="sqlMapClient"/></property>
+        <property name="dataSource"><ref bean="dataSource"/></property>
+    </bean>
+	<bean id="com.base.db.dao.master.TgamesArchiveDao" class="org.springframework.aop.framework.ProxyFactoryBean" >
+        <property name="proxyInterfaces">
+            <value>com.base.dao.DaoIf</value>
+        </property>
+        <property name="target">
+            <ref local="com.base.db.dao.master.TgamesArchiveDaoImpl"/>
+        </property>
+    </bean>
+    <bean id="com.base.db.dao.master.TgamesArchiveDaoImpl" class="com.base.db.dao.master.TgamesArchiveDaoImpl">
+        <property name="sqlMapClient"><ref bean="sqlMapClient"/></property>
+        <property name="dataSource"><ref bean="dataSource"/></property>
+    </bean>
+	<bean id="com.base.db.dao.master.TguestsDao" class="org.springframework.aop.framework.ProxyFactoryBean" >
+        <property name="proxyInterfaces">
+            <value>com.base.dao.DaoIf</value>
+        </property>
+        <property name="target">
+            <ref local="com.base.db.dao.master.TguestsDaoImpl"/>
+        </property>
+    </bean>
+    <bean id="com.base.db.dao.master.TguestsDaoImpl" class="com.base.db.dao.master.TguestsDaoImpl">
+        <property name="sqlMapClient"><ref bean="sqlMapClient"/></property>
+        <property name="dataSource"><ref bean="dataSource"/></property>
+    </bean>
+	<bean id="com.base.db.dao.master.TmessageDao" class="org.springframework.aop.framework.ProxyFactoryBean" >
+        <property name="proxyInterfaces">
+            <value>com.base.dao.DaoIf</value>
+        </property>
+        <property name="target">
+            <ref local="com.base.db.dao.master.TmessageDaoImpl"/>
+        </property>
+    </bean>
+    <bean id="com.base.db.dao.master.TmessageDaoImpl" class="com.base.db.dao.master.TmessageDaoImpl">
+        <property name="sqlMapClient"><ref bean="sqlMapClient"/></property>
+        <property name="dataSource"><ref bean="dataSource"/></property>
+    </bean>
+	<bean id="com.base.db.dao.master.TroomsDao" class="org.springframework.aop.framework.ProxyFactoryBean" >
+        <property name="proxyInterfaces">
+            <value>com.base.dao.DaoIf</value>
+        </property>
+        <property name="target">
+            <ref local="com.base.db.dao.master.TroomsDaoImpl"/>
+        </property>
+    </bean>
+    <bean id="com.base.db.dao.master.TroomsDaoImpl" class="com.base.db.dao.master.TroomsDaoImpl">
+        <property name="sqlMapClient"><ref bean="sqlMapClient"/></property>
+        <property name="dataSource"><ref bean="dataSource"/></property>
+    </bean>
+	<bean id="com.base.db.dao.master.TusersDao" class="org.springframework.aop.framework.ProxyFactoryBean" >
+        <property name="proxyInterfaces">
+            <value>com.base.dao.DaoIf</value>
+        </property>
+        <property name="target">
+            <ref local="com.base.db.dao.master.TusersDaoImpl"/>
+        </property>
+    </bean>
+    <bean id="com.base.db.dao.master.TusersDaoImpl" class="com.base.db.dao.master.TusersDaoImpl">
+        <property name="sqlMapClient"><ref bean="sqlMapClient"/></property>
+        <property name="dataSource"><ref bean="dataSource"/></property>
+    </bean>
+	<bean id="com.base.db.dao.master.WtbApplylistDao" class="org.springframework.aop.framework.ProxyFactoryBean" >
+        <property name="proxyInterfaces">
+            <value>com.base.dao.DaoIf</value>
+        </property>
+        <property name="target">
+            <ref local="com.base.db.dao.master.WtbApplylistDaoImpl"/>
+        </property>
+    </bean>
+    <bean id="com.base.db.dao.master.WtbApplylistDaoImpl" class="com.base.db.dao.master.WtbApplylistDaoImpl">
+        <property name="sqlMapClient"><ref bean="sqlMapClient"/></property>
+        <property name="dataSource"><ref bean="dataSource"/></property>
+    </bean>
+	<bean id="com.base.db.dao.master.WtbBaseinfoDao" class="org.springframework.aop.framework.ProxyFactoryBean" >
+        <property name="proxyInterfaces">
+            <value>com.base.dao.DaoIf</value>
+        </property>
+        <property name="target">
+            <ref local="com.base.db.dao.master.WtbBaseinfoDaoImpl"/>
+        </property>
+    </bean>
+    <bean id="com.base.db.dao.master.WtbBaseinfoDaoImpl" class="com.base.db.dao.master.WtbBaseinfoDaoImpl">
+        <property name="sqlMapClient"><ref bean="sqlMapClient"/></property>
+        <property name="dataSource"><ref bean="dataSource"/></property>
+    </bean>
+	<bean id="com.base.db.dao.master.WtbFeedbackDao" class="org.springframework.aop.framework.ProxyFactoryBean" >
+        <property name="proxyInterfaces">
+            <value>com.base.dao.DaoIf</value>
+        </property>
+        <property name="target">
+            <ref local="com.base.db.dao.master.WtbFeedbackDaoImpl"/>
+        </property>
+    </bean>
+    <bean id="com.base.db.dao.master.WtbFeedbackDaoImpl" class="com.base.db.dao.master.WtbFeedbackDaoImpl">
+        <property name="sqlMapClient"><ref bean="sqlMapClient"/></property>
+        <property name="dataSource"><ref bean="dataSource"/></property>
+    </bean>
+	<bean id="com.base.db.dao.master.WtbRegionDao" class="org.springframework.aop.framework.ProxyFactoryBean" >
+        <property name="proxyInterfaces">
+            <value>com.base.dao.DaoIf</value>
+        </property>
+        <property name="target">
+            <ref local="com.base.db.dao.master.WtbRegionDaoImpl"/>
+        </property>
+    </bean>
+    <bean id="com.base.db.dao.master.WtbRegionDaoImpl" class="com.base.db.dao.master.WtbRegionDaoImpl">
+        <property name="sqlMapClient"><ref bean="sqlMapClient"/></property>
+        <property name="dataSource"><ref bean="dataSource"/></property>
+    </bean>
+	<bean id="com.base.db.dao.master.WtbUsersDao" class="org.springframework.aop.framework.ProxyFactoryBean" >
+        <property name="proxyInterfaces">
+            <value>com.base.dao.DaoIf</value>
+        </property>
+        <property name="target">
+            <ref local="com.base.db.dao.master.WtbUsersDaoImpl"/>
+        </property>
+    </bean>
+    <bean id="com.base.db.dao.master.WtbUsersDaoImpl" class="com.base.db.dao.master.WtbUsersDaoImpl">
+        <property name="sqlMapClient"><ref bean="sqlMapClient"/></property>
+        <property name="dataSource"><ref bean="dataSource"/></property>
+    </bean>
+	<!-- ============== -->
+	<!-- ======================================================================================== -->
+
+</beans>

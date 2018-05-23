@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.code.dao.read.ReadRole2Mapper">
+	<!-- 返回的map -->
+	<resultMap id="role2" type="com.code.domain.Role2">
+		<result property="ID" column="Role2_ID" />
+		<result property="CreateTime" column="Role2_CreateTime" />
+		<result property="ModifyTime" column="Role2_ModifyTime" />
+		<result property="Status" column="Role2_Status" />
+		<result property="Name" column="Role2_Name" />
+		<result property="AdminID" column="Role2_AdminID" />
+	</resultMap>
+	<!-- sql查询语句-->
+	<sql id="sql">
+		Role2_ID,Role2_CreateTime,Role2_ModifyTime,Role2_Status,Role2_Name,Role2_AdminID
+	</sql>
+	<!-- sql查询条件-->
+	<sql id="where">
+		1=1 
+		<if test="ID!=null">
+				 and Role2_ID = #{ID}
+</if>
+<if test="CreateTime!=null">
+				 and Role2_CreateTime = #{CreateTime}
+</if>
+<if test="ModifyTime!=null">
+				 and Role2_ModifyTime = #{ModifyTime}
+</if>
+<if test="Status!=null">
+				 and Role2_Status = #{Status}
+</if>
+<if test="Name!=null">
+				 and Role2_Name = #{Name}
+</if>
+<if test="AdminID!=null">
+				 and Role2_AdminID = #{AdminID}
+</if>
+
+	</sql>
+	<!-- 根据ID 查找-->
+	<select id="findById" resultMap="role2" parameterType="long">
+		SELECT
+		<include refid="sql"></include>
+		FROM t_Role2
+		<where>
+			Role2_ID = #{_parameter} 
+		</where>
+	</select>
+	<!-- 根据条件 查找-->
+	<select id="query"  resultMap="role2"
+		parameterType="java.util.Map">
+		SELECT
+		<include refid="sql"></include>
+		FROM t_Role2
+		<where>
+			<include refid="where"></include>
+		</where>
+	
+	</select>
+	<!-- 根据条件总数-->
+	<select id="queryCount" parameterType="map" resultType="int">
+		SELECT
+			Count(1)
+			FROM t_Role2
+			<where>
+				<include refid="where"></include>
+			</where>
+	</select>
+
+
+
+</mapper>
