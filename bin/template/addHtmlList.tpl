@@ -44,6 +44,7 @@
     </div>
 </div>
 <script>
+    var tempApp="";
     window.onload=function () {
         var app = new Vue({
             el: "#app",
@@ -61,6 +62,7 @@
                 }
             },
             mounted: function () {
+                tempApp=this;
                 if(this.data.iD!=0){
                     findByID(this,this.data.iD,"../${classdef}/find${classdef}/")
                 }
