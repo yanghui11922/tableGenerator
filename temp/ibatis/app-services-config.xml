@@ -10,40 +10,40 @@
 
 	<!-- Service -->
 	<!-- ======================================================================================== -->
-		<bean id="com.code.service.master.Trole1ServiceImpl" class="com.code.service.master.Trole1ServiceImpl">
+		<bean id="com.code.service.master.TarticleServiceImpl" class="com.code.service.master.TarticleServiceImpl">
 		<flex:remoting-destination />
-		<property name="dao"><ref bean="com.code.dao.master.Trole1Dao"/></property>
+		<property name="dao"><ref bean="com.code.dao.master.TarticleDao"/></property>
 	</bean>
-	<bean id="com.code.service.master.Trole2ServiceImpl" class="com.code.service.master.Trole2ServiceImpl">
+	<bean id="com.code.service.master.TbaseinfoServiceImpl" class="com.code.service.master.TbaseinfoServiceImpl">
 		<flex:remoting-destination />
-		<property name="dao"><ref bean="com.code.dao.master.Trole2Dao"/></property>
+		<property name="dao"><ref bean="com.code.dao.master.TbaseinfoDao"/></property>
 	</bean>
 	<!-- ============== -->
 	<!-- ======================================================================================== -->
 
 	<!-- DAO -->
 	<!-- ======================================================================================== -->
-	<bean id="com.code.dao.master.Trole1Dao" class="org.springframework.aop.framework.ProxyFactoryBean" >
+	<bean id="com.code.dao.master.TarticleDao" class="org.springframework.aop.framework.ProxyFactoryBean" >
         <property name="proxyInterfaces">
             <value>com.base.dao.DaoIf</value>
         </property>
         <property name="target">
-            <ref local="com.code.dao.master.Trole1DaoImpl"/>
+            <ref local="com.code.dao.master.TarticleDaoImpl"/>
         </property>
     </bean>
-    <bean id="com.code.dao.master.Trole1DaoImpl" class="com.code.dao.master.Trole1DaoImpl">
+    <bean id="com.code.dao.master.TarticleDaoImpl" class="com.code.dao.master.TarticleDaoImpl">
         <property name="sqlMapClient"><ref bean="sqlMapClient"/></property>
         <property name="dataSource"><ref bean="dataSource"/></property>
     </bean>
-	<bean id="com.code.dao.master.Trole2Dao" class="org.springframework.aop.framework.ProxyFactoryBean" >
+	<bean id="com.code.dao.master.TbaseinfoDao" class="org.springframework.aop.framework.ProxyFactoryBean" >
         <property name="proxyInterfaces">
             <value>com.base.dao.DaoIf</value>
         </property>
         <property name="target">
-            <ref local="com.code.dao.master.Trole2DaoImpl"/>
+            <ref local="com.code.dao.master.TbaseinfoDaoImpl"/>
         </property>
     </bean>
-    <bean id="com.code.dao.master.Trole2DaoImpl" class="com.code.dao.master.Trole2DaoImpl">
+    <bean id="com.code.dao.master.TbaseinfoDaoImpl" class="com.code.dao.master.TbaseinfoDaoImpl">
         <property name="sqlMapClient"><ref bean="sqlMapClient"/></property>
         <property name="dataSource"><ref bean="dataSource"/></property>
     </bean>

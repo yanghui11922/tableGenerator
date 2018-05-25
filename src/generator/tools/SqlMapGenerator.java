@@ -295,7 +295,7 @@ public class SqlMapGenerator {
     private static String getConditionSearchSql(Entry <String, List <TableInfoBean>> tableInfo) {
         String whereSql = "";
         for (TableInfoBean tableInfoBean : tableInfo.getValue()) {
-        		whereSql+= tableInfoBean.getColumnName() +" like CONCAT(CONCAT('%', #{search,jdbcType=VARCHAR}),'%') or \r\n\t\t\t\t";
+        		whereSql+= tableInfoBean.getColumnName() +" like binary CONCAT(CONCAT('%', #{search,jdbcType=VARCHAR}),'%') or \r\n\t\t\t\t";
         }
         return whereSql;
     }

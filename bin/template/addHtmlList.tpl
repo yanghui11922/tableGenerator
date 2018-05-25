@@ -23,7 +23,7 @@
 							<#list xName as field>
 							    <div class="hr-line-dashed" ></div>
 	                            <div class="form-group">
-	                                <label class="col-sm-2 control-label" >${field.xame}</label>
+	                                <label class="col-sm-2 control-label" v-text="${field.xame}"></label>
 	                                <div class="col-sm-10">
 	                                    <input type="text" v-model="data.${field.xame}" class="form-control">
 	                            </div>
@@ -49,6 +49,9 @@
         var app = new Vue({
             el: "#app",
             data: {
+                 <#list xName as field>
+                    ${field.xame}:"${field.xame}",
+                 </#list>
                 data:{
                     iD:getUrlKey("id"),
                     <#list xName as field>
@@ -58,6 +61,7 @@
             },
             methods: {
                 save: function () {
+                    if(validate()){return};
                     savaData(this,"../${classdef}/modify${classdef}")
                 }
             },
@@ -69,6 +73,16 @@
                 bindImgError()
             }
         })
+    }
+    function validate(){
+        var message="不允许为空。"
+        <#list xName as field>
+        if(!chechIsUnll(tempApp.data.${field.xame})){
+            error(tempApp.${field.xame}+message);
+            return true;
+        }
+        </#list>
+        return false;
     }
 </script>
 </body>

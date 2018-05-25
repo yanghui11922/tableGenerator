@@ -9,9 +9,9 @@
     <settings useStatementNamespaces="true" />
 
     <sqlMap
-		resource="com/code/dao/Role1Mapper.xml" />
+		resource="com/code/dao/ArticleMapper.xml" />
     <sqlMap
-		resource="com/code/dao/Role2Mapper.xml" />
+		resource="com/code/dao/BaseinfoMapper.xml" />
 
 </sqlMapConfig>
 <!-- ======================================================================================== -->
