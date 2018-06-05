@@ -10,40 +10,24 @@
 
 	<!-- Service -->
 	<!-- ======================================================================================== -->
-		<bean id="com.code.service.master.TarticleServiceImpl" class="com.code.service.master.TarticleServiceImpl">
+		<bean id="com.code.service.master.TshopServiceImpl" class="com.code.service.master.TshopServiceImpl">
 		<flex:remoting-destination />
-		<property name="dao"><ref bean="com.code.dao.master.TarticleDao"/></property>
-	</bean>
-	<bean id="com.code.service.master.TbaseinfoServiceImpl" class="com.code.service.master.TbaseinfoServiceImpl">
-		<flex:remoting-destination />
-		<property name="dao"><ref bean="com.code.dao.master.TbaseinfoDao"/></property>
+		<property name="dao"><ref bean="com.code.dao.master.TshopDao"/></property>
 	</bean>
 	<!-- ============== -->
 	<!-- ======================================================================================== -->
 
 	<!-- DAO -->
 	<!-- ======================================================================================== -->
-	<bean id="com.code.dao.master.TarticleDao" class="org.springframework.aop.framework.ProxyFactoryBean" >
+	<bean id="com.code.dao.master.TshopDao" class="org.springframework.aop.framework.ProxyFactoryBean" >
         <property name="proxyInterfaces">
             <value>com.base.dao.DaoIf</value>
         </property>
         <property name="target">
-            <ref local="com.code.dao.master.TarticleDaoImpl"/>
+            <ref local="com.code.dao.master.TshopDaoImpl"/>
         </property>
     </bean>
-    <bean id="com.code.dao.master.TarticleDaoImpl" class="com.code.dao.master.TarticleDaoImpl">
-        <property name="sqlMapClient"><ref bean="sqlMapClient"/></property>
-        <property name="dataSource"><ref bean="dataSource"/></property>
-    </bean>
-	<bean id="com.code.dao.master.TbaseinfoDao" class="org.springframework.aop.framework.ProxyFactoryBean" >
-        <property name="proxyInterfaces">
-            <value>com.base.dao.DaoIf</value>
-        </property>
-        <property name="target">
-            <ref local="com.code.dao.master.TbaseinfoDaoImpl"/>
-        </property>
-    </bean>
-    <bean id="com.code.dao.master.TbaseinfoDaoImpl" class="com.code.dao.master.TbaseinfoDaoImpl">
+    <bean id="com.code.dao.master.TshopDaoImpl" class="com.code.dao.master.TshopDaoImpl">
         <property name="sqlMapClient"><ref bean="sqlMapClient"/></property>
         <property name="dataSource"><ref bean="dataSource"/></property>
     </bean>
