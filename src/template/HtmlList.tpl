@@ -68,7 +68,8 @@
                 },
             },
             mounted: function () {
-                bindImgError()
+                bindImgError();
+                initFancybox();
                 tempApp=this;
             }
 

@@ -53,8 +53,8 @@ public class ${classdef}Controller extends BaseController {
             }else{
                 ${classdef}Service.deleteById(id);
             }
-            queryMap.clear();
         }
+        queryMap.clear();
         returnMap.put("code",0);
         returnMap.put("message","操作成功");
         RabbitUtil.getInstance().OperationLog(request.getHeader("Token"),"设置【${classdef}-set${classdef}Status】状态",ReadOnlineService,OperationService,RabbitTemplate,ReadUserService);

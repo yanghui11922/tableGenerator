@@ -25,17 +25,17 @@
 	</update>
 
 
-	<!-- 根据编号删除 by majian-->
+	<!-- 根据编号删除-->
 	<update id="deleteById" parameterType="${package}.${tblName?cap_first}">
 		update ${tblNameSql} set ${conditionStatus}=88 where ${conditionSqlByID} 
 	</update>
 
-	<!-- 根据编号恢复 by majian-->
+	<!-- 根据编号恢复-->
 	<update id="recoverByID" parameterType="${package}.${tblName?cap_first}">
 		update ${tblNameSql} set ${conditionStatus}=1 where ${conditionSqlByID} 
 	</update>
 
-	<!-- 根据条件删除 by majian-->
+	<!-- 根据条件删除-->
 	<update id="deleteByCondition" parameterType="${package}.${tblName?cap_first}">
 		update ${tblNameSql} set ${conditionStatus}=88 
 		<where>
@@ -43,7 +43,7 @@
 		</where>
 	</update>
 
-	<!-- 根据条件恢复 by majian-->
+	<!-- 根据条件恢复-->
 	<update id="recoverByCondition" parameterType="${package}.${tblName?cap_first}">
 		update ${tblNameSql} set ${conditionStatus}=1 
 		<where>
