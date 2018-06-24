@@ -66,9 +66,16 @@
                     }
                     modifyShow(this,url,"100%","100%","${classdef}");
                 },
+                 view:function(row, tr, field){
+                    var url = "../Admin/add${classdef}.html?";
+                    url+= "id="+row.iD;
+                    modifyShow(this,url,"100%","100%","${classdef}");
+
+                }
             },
             mounted: function () {
-                bindImgError()
+                bindImgError();
+                initFancybox();
                 tempApp=this;
             }
 
@@ -109,7 +116,7 @@
                         formatter: statusFormatter
                     },
                 ];
-                getDataTable($('#exampleTableEvents'),"../${classdef}/query${classdef}Page",columns,queryParams,false);
+                getDataTable($('#exampleTableEvents'),"../${classdef}/query${classdef}Page",columns,queryParams,true,tempApp);
             })();
             function queryParams(params) {
                 var temp={}
