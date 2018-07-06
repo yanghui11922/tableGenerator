@@ -49,6 +49,7 @@
         var app = new Vue({
             el: "#app",
             data: {
+                 viewflag:getUrlKey("viewflag")=="1"?false:true,//查看标志
                  <#list xName as field>
                     ${field.xame}:"${field.xame}",
                  </#list>
@@ -60,6 +61,12 @@
                 }
             },
             methods: {
+                initDocument: function () {//一些特殊的处理如查看时全部只读   时间控件初始化等
+                    if(this.viewflag){//查看goodsDataList
+                        $('input,select,textarea').attr('disabled',true);//
+                        //setTimeout("$('#goodsDataList tbody tr td input').attr('readonly',true)",200);//针对有子表列表编辑时可放开此句
+                    }
+                },
                 save: function () {
                     if(validate()){return};
                     savaData(this,"../${classdef}/modify${classdef}")
@@ -70,7 +77,8 @@
                 if(this.data.iD!=0){
                     findByID(this,this.data.iD,"../${classdef}/find${classdef}/")
                 }
-                bindImgError()
+                bindImgError();
+                this.initDocument();
             }
         })
     }

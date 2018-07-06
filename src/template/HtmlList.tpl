@@ -69,6 +69,7 @@
                  view:function(row, tr, field){//慧姐提供
                     var url = "../Admin/add${classdef}.html?";
                     url+= "id="+row.iD;
+                    url+= "&viewflag=1";//查看标志，页面全部设置成只读
                     modifyShow(this,url,"100%","100%","${classdef}");
                 }
             },

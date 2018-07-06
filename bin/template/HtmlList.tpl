@@ -66,11 +66,11 @@
                     }
                     modifyShow(this,url,"100%","100%","${classdef}");
                 },
-                 view:function(row, tr, field){
+                 view:function(row, tr, field){//慧姐提供
                     var url = "../Admin/add${classdef}.html?";
                     url+= "id="+row.iD;
+                    url+= "&viewflag=1";//查看标志，页面全部设置成只读
                     modifyShow(this,url,"100%","100%","${classdef}");
-
                 }
             },
             mounted: function () {
@@ -109,11 +109,12 @@
                         field: 'modifyTime',
                     },
                     {
-                        title: getStatus(),
+                        title: getChangHead("类型","status",[{"id":88,"title":"删除"},{"id":1,"title":"正常"}]),
                         align: 'center',
                         field: 'status',
-                        titleTooltip : "",
-                        formatter: statusFormatter
+                        formatter:function(value){
+                            return headFormatter(value,[{"id":88,"title":"删除"},{"id":1,"title":"正常"}]);
+                        }
                     },
                 ];
                 getDataTable($('#exampleTableEvents'),"../${classdef}/query${classdef}Page",columns,queryParams,true,tempApp);
