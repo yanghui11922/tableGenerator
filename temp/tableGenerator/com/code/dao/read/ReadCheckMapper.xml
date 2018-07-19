@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.code.dao.read.ReadCheckMapper">
+	<!-- 返回的map -->
+	<resultMap id="check" type="com.code.domain.Check">
+		<result property="ID" column="Check_ID" />
+		<result property="CreateTime" column="Check_CreateTime" />
+		<result property="ModifyTime" column="Check_ModifyTime" />
+		<result property="Status" column="Check_Status" />
+		<result property="AdminID" column="Check_AdminID" />
+		<result property="Administrator" column="Check_Administrator" />
+		<result property="WarehouseID" column="Check_WarehouseID" />
+		<result property="Name" column="Check_Name" />
+		<result property="Time" column="Check_Time" />
+		<result property="Memo" column="Check_Memo" />
+		<result property="StoreID" column="Check_StoreID" />
+		<result property="AdjustStatus" column="Check_AdjustStatus" />
+		<result property="Operator" column="Check_Operator" />
+		<result property="Updater" column="Check_Updater" />
+	</resultMap>
+	<!-- sql查询语句-->
+	<sql id="sql">
+		Check_ID,Check_CreateTime,Check_ModifyTime,Check_Status,Check_AdminID,Check_Administrator,Check_WarehouseID,Check_Name,Check_Time,Check_Memo,Check_StoreID,Check_AdjustStatus,Check_Operator,Check_Updater
+	</sql>
+	<!-- sql查询条件-->
+	<sql id="where">
+		1=1 
+		<if test="ID!=null">
+				 and Check_ID = #{ID}
+</if>
+<if test="CreateTime!=null">
+				 and Check_CreateTime = #{CreateTime}
+</if>
+<if test="ModifyTime!=null">
+				 and Check_ModifyTime = #{ModifyTime}
+</if>
+<if test="Status!=null">
+				 and Check_Status = #{Status}
+</if>
+<if test="AdminID!=null">
+				 and Check_AdminID = #{AdminID}
+</if>
+<if test="Administrator!=null">
+				 and Check_Administrator = #{Administrator}
+</if>
+<if test="WarehouseID!=null">
+				 and Check_WarehouseID = #{WarehouseID}
+</if>
+<if test="Name!=null">
+				 and Check_Name = #{Name}
+</if>
+<if test="Time!=null">
+				 and Check_Time = #{Time}
+</if>
+<if test="Memo!=null">
+				 and Check_Memo = #{Memo}
+</if>
+<if test="StoreID!=null">
+				 and Check_StoreID = #{StoreID}
+</if>
+<if test="AdjustStatus!=null">
+				 and Check_AdjustStatus = #{AdjustStatus}
+</if>
+<if test="Operator!=null">
+				 and Check_Operator = #{Operator}
+</if>
+<if test="Updater!=null">
+				 and Check_Updater = #{Updater}
+</if>
+
+		<!-- 这边要数据自己处理 -->
+		<if test="search != null">
+			and (
+				Check_ID like binary CONCAT(CONCAT('%', #{search,jdbcType=VARCHAR}),'%') or 
+				Check_CreateTime like binary CONCAT(CONCAT('%', #{search,jdbcType=VARCHAR}),'%') or 
+				Check_ModifyTime like binary CONCAT(CONCAT('%', #{search,jdbcType=VARCHAR}),'%') or 
+				Check_Status like binary CONCAT(CONCAT('%', #{search,jdbcType=VARCHAR}),'%') or 
+				Check_AdminID like binary CONCAT(CONCAT('%', #{search,jdbcType=VARCHAR}),'%') or 
+				Check_Administrator like binary CONCAT(CONCAT('%', #{search,jdbcType=VARCHAR}),'%') or 
+				Check_WarehouseID like binary CONCAT(CONCAT('%', #{search,jdbcType=VARCHAR}),'%') or 
+				Check_Name like binary CONCAT(CONCAT('%', #{search,jdbcType=VARCHAR}),'%') or 
+				Check_Time like binary CONCAT(CONCAT('%', #{search,jdbcType=VARCHAR}),'%') or 
+				Check_Memo like binary CONCAT(CONCAT('%', #{search,jdbcType=VARCHAR}),'%') or 
+				Check_StoreID like binary CONCAT(CONCAT('%', #{search,jdbcType=VARCHAR}),'%') or 
+				Check_AdjustStatus like binary CONCAT(CONCAT('%', #{search,jdbcType=VARCHAR}),'%') or 
+				Check_Operator like binary CONCAT(CONCAT('%', #{search,jdbcType=VARCHAR}),'%') or 
+				Check_Updater like binary CONCAT(CONCAT('%', #{search,jdbcType=VARCHAR}),'%') or 
+				
+				1 != 1
+			)
+		</if>
+	</sql>
+	<!-- 根据ID 查找-->
+	<select id="findById" resultMap="check" parameterType="long">
+		SELECT
+		<include refid="sql"></include>
+		FROM t_check
+		<where>
+			Check_ID = #{_parameter} 
+		</where>
+	</select>
+	<!-- 根据条件 查找-->
+	<select id="query"  resultMap="check"
+		parameterType="java.util.Map">
+		SELECT
+		<include refid="sql"></include>
+		FROM t_check
+		<where>
+			<include refid="where"></include>
+		</where>
+	
+	</select>
+	<!-- 根据条件总数-->
+	<select id="queryCount" parameterType="map" resultType="int">
+		SELECT
+			Count(1)
+			FROM t_check
+			<where>
+				<include refid="where"></include>
+			</where>
+	</select>
+
+
+
+</mapper>
