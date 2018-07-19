@@ -62,6 +62,7 @@
                         url+= "id=0";
                     }else{//修改
                         if(checkIsSelection()){return};
+                        if(checkIsSelectionOne()){return};//用于只判断一条记录
                         url+= "id="+getRecordIDForFastJson($('#exampleTableEvents'));
                     }
                     modifyShow(this,url,"100%","100%","${classdef}");
