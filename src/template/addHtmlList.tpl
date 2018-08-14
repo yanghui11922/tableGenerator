@@ -3,9 +3,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>代码生成工具- majian</title>
-    <meta name="keywords" content="马健">
-    <meta name="description" content="马健">
     <script src="js/web/include.js?v=1.0.5"></script>
 </head>
 <body class="gray-bg">
