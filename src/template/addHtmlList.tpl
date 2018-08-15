@@ -27,12 +27,12 @@
                             </div>
 							</#list>
                           
-                            <div class="hr-line-dashed"></div>
+                           <!--  <div class="hr-line-dashed"></div>
                             <div class="form-group">
                                 <div class="col-sm-4 col-sm-offset-2">
                                     <button class="btn btn-primary" @click="save" type="submit">保存内容</button>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
