@@ -10,24 +10,24 @@
 
 	<!-- Service -->
 	<!-- ======================================================================================== -->
-		<bean id="com.code.service.master.TgeneralizeServiceImpl" class="com.code.service.master.TgeneralizeServiceImpl">
+		<bean id="com.code.service.master.TcheckServiceImpl" class="com.code.service.master.TcheckServiceImpl">
 		<flex:remoting-destination />
-		<property name="dao"><ref bean="com.code.dao.master.TgeneralizeDao"/></property>
+		<property name="dao"><ref bean="com.code.dao.master.TcheckDao"/></property>
 	</bean>
 	<!-- ============== -->
 	<!-- ======================================================================================== -->
 
 	<!-- DAO -->
 	<!-- ======================================================================================== -->
-	<bean id="com.code.dao.master.TgeneralizeDao" class="org.springframework.aop.framework.ProxyFactoryBean" >
+	<bean id="com.code.dao.master.TcheckDao" class="org.springframework.aop.framework.ProxyFactoryBean" >
         <property name="proxyInterfaces">
             <value>com.base.dao.DaoIf</value>
         </property>
         <property name="target">
-            <ref local="com.code.dao.master.TgeneralizeDaoImpl"/>
+            <ref local="com.code.dao.master.TcheckDaoImpl"/>
         </property>
     </bean>
-    <bean id="com.code.dao.master.TgeneralizeDaoImpl" class="com.code.dao.master.TgeneralizeDaoImpl">
+    <bean id="com.code.dao.master.TcheckDaoImpl" class="com.code.dao.master.TcheckDaoImpl">
         <property name="sqlMapClient"><ref bean="sqlMapClient"/></property>
         <property name="dataSource"><ref bean="dataSource"/></property>
     </bean>

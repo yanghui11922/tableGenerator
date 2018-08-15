@@ -34,7 +34,7 @@ public class HtmlListGenerator implements Globles {
 
         try {
             String _package=CommonUtil.getHtmlListOutPutPath();
-            String path =_package  + "/"
+            String path =_package  + "/" + getDomainName(tableInfo.getKey()) +"/"
                 + getDomainName(tableInfo.getKey()) + "List.html";
 
             boolean fileb=FileUtil.mkdir(path);

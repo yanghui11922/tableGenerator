@@ -3,9 +3,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>代码生成工具- majian</title>
-    <meta name="keywords" content="马健">
-    <meta name="description" content="马健">
     <script src="js/web/include.js?v=1.0.5"></script>
 </head>
 <body class="gray-bg">
@@ -57,7 +54,7 @@
                     setStatus(this,val)
                 },
                 modify: function (flag) {
-                    var url = "../Admin/add${classdef}.html?";
+                    var url = "../Admin/${classdef}/add${classdef}.html?";
                     if(flag==0){//新增
                         url+= "id=0";
                     }else{//修改
@@ -70,6 +67,7 @@
                  view:function(row, tr, field){//慧姐提供
                     var url = "../Admin/add${classdef}.html?";
                     url+= "id="+row.iD;
+                    url+= "&viewflag=1";//查看标志，页面全部设置成只读
                     modifyShow(this,url,"100%","100%","${classdef}");
                 }
             },
