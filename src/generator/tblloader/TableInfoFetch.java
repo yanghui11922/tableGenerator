@@ -138,11 +138,12 @@ public class TableInfoFetch {
             while (rs.next()) {
                 bean = new TableInfoBean();
 
-                bean.setColumnName(rs.getString("COLUMN_NAME"));
-                bean.setTypeName(rs.getString("TYPE_NAME"));
+                bean.setColumnName(rs.getString("COLUMN_NAME"));//列名
+                bean.setTypeName(rs.getString("TYPE_NAME"));//数据类型
                 bean.setSize(rs.getInt("COLUMN_SIZE"));
                 bean.setNullAble(0 == rs.getInt("NULLABLE") ? false : true);
                 bean.setComment(rs.getString("REMARKS"));
+                bean.setCharOctetLength(rs.getInt("CHAR_OCTET_LENGTH"));//对于 char 类型，该长度是列中的最大字节数
                 
                 if (pkColumns.contains(bean.getColumnName())) {
                     bean.setPrimaryKey(true);
