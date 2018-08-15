@@ -13,8 +13,20 @@ public class TableInfoBean {
     private boolean isNullAble = false;
 
     private String comment;
+    
+    private int   charOctetLength  = -1;//对于 char 类型，该长度是列中的最大字节数
 
-    public boolean isPrimaryKey() {
+    public int getCharOctetLength() {
+		return charOctetLength;
+	}
+
+
+	public void setCharOctetLength(int charOctetLength) {
+		this.charOctetLength = charOctetLength;
+	}
+
+
+	public boolean isPrimaryKey() {
 
         return primaryKey;
     }

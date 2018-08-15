@@ -13,8 +13,28 @@ public class DomainDefineBean {
     private String column = null;
     
     private String xame=null;
+    
+    private int   charOctetLength  = 0;//对于 char 类型，该长度是列中的最大字节数
+    
+    private boolean isNullAble = false;
 
-    public String getType() {
+    public boolean getNullAble() {
+		return isNullAble;
+	}
+
+	public void setNullAble(boolean isNullAble) {
+		this.isNullAble = isNullAble;
+	}
+
+	public int getCharOctetLength() {
+		return charOctetLength;
+	}
+
+	public void setCharOctetLength(int charOctetLength) {
+		this.charOctetLength = charOctetLength;
+	}
+
+	public String getType() {
         return type;
     }
 
