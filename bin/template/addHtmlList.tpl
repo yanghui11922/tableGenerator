@@ -22,7 +22,7 @@
 	                            <div class="form-group">
 	                                <label class="col-sm-2 control-label" v-text="${field.xame}"></label>
 	                                <div class="col-sm-10">
-	                                    <input type="text" v-model="data.${field.xame}" class="form-control">
+	                                    <input type="text" v-model="data.${field.xame}" class="form-control" <#if field.charOctetLength gt 0 > maxlength="${field.charOctetLength}" </#if> >
 	                            </div>
                             </div>
 							</#list>
@@ -48,7 +48,7 @@
             data: {
                  viewflag:getUrlKey("viewflag")=="1"?false:true,//查看标志
                  <#list xName as field>
-                    ${field.xame}:"${field.xame}",
+                    ${field.xame}:"${field.comment}",
                  </#list>
                 data:{
                     iD:getUrlKey("id"),
@@ -82,10 +82,12 @@
     function validate(){
         var message="不允许为空。"
         <#list xName as field>
+        <#if field.nullAble == false>
         if(!chechIsUnll(tempApp.data.${field.xame})){
             error(tempApp.${field.xame}+message);
             return true;
         }
+        </#if>
         </#list>
         return false;
     }

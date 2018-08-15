@@ -73,7 +73,20 @@ now(),
 				)
 	</insert>
 	<update id="update" parameterType="com.code.domain.Check">
-		update t_check set Check_ModifyTime = now(),Check_Status = #{Status},Check_AdminID = #{AdminID},Check_Administrator = #{Administrator},Check_WarehouseID = #{WarehouseID},Check_Name = #{Name},Check_Time = #{Time},Check_Memo = #{Memo},Check_StoreID = #{StoreID},Check_AdjustStatus = #{AdjustStatus},Check_Operator = #{Operator},Check_Updater = #{Updater}
+		update t_check set
+		 Check_ModifyTime=now
+		 <if test="Status!=null">,Check_Status = #{Status}</if>
+<if test="AdminID!=null">,Check_AdminID = #{AdminID}</if>
+<if test="Administrator!=null">,Check_Administrator = #{Administrator}</if>
+<if test="WarehouseID!=null">,Check_WarehouseID = #{WarehouseID}</if>
+<if test="Name!=null">,Check_Name = #{Name}</if>
+<if test="Time!=null">,Check_Time = #{Time}</if>
+<if test="Memo!=null">,Check_Memo = #{Memo}</if>
+<if test="StoreID!=null">,Check_StoreID = #{StoreID}</if>
+<if test="AdjustStatus!=null">,Check_AdjustStatus = #{AdjustStatus}</if>
+<if test="Operator!=null">,Check_Operator = #{Operator}</if>
+<if test="Updater!=null">,Check_Updater = #{Updater}</if>
+
 		<where>
 			Check_ID= #{ID} 
 		</where>

@@ -10,6 +10,7 @@ import generator.util.CommentUtil;
 import generator.util.CommonUtil;
 import generator.util.DateUtil;
 import generator.util.FileUtil;
+import generator.util.PropertyFileReader;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -21,20 +22,30 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Map.Entry;
 
 import org.apache.commons.io.FileUtils;
 
 public class HtmlListGenerator implements Globles {
+    private static Properties property = null;
 
+    static {
+        if (null == property) {
+            property = PropertyFileReader.getProperties("config.tbldef");
+        }
+    }
+
+	
     public static void genaratorEntity(Configuration cfg,
         Entry<String, List<TableInfoBean>> tableInfo) throws IOException,
         TemplateException {
+    		String viewPathName = property.getProperty("viewPathName");
         BufferedWriter writer = null;
 
         try {
             String _package=CommonUtil.getHtmlListOutPutPath();
-            String path =_package  + "/" + getDomainName(tableInfo.getKey()) +"/"
+            String path =_package  + "/" + viewPathName +"/"
                 + getDomainName(tableInfo.getKey()) + "List.html";
 
             boolean fileb=FileUtil.mkdir(path);
@@ -130,6 +141,7 @@ public class HtmlListGenerator implements Globles {
         rootMap.put("fieldList", fieldList);
         rootMap.put("importList", importList);
         rootMap.put("columnList", columnList);
+        rootMap.put("viewPathName", property.getProperty("viewPathName"));
     }
 
     private static String getDomainName(String tableName) {
