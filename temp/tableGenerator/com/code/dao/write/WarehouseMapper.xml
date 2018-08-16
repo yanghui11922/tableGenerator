@@ -53,7 +53,15 @@ now(),
 				)
 	</insert>
 	<update id="update" parameterType="com.code.domain.Warehouse">
-		update t_warehouse set Warehouse_ModifyTime = now(),Warehouse_Status = #{Status},Warehouse_Name = #{Name},Warehouse_Code = #{Code},Warehouse_Address = #{Address},Warehouse_Memo = #{Memo},Warehouse_BaseInfoID = #{BaseInfoID}
+		update t_warehouse set
+		 Warehouse_ModifyTime=now
+		 <if test="Status!=null">,Warehouse_Status = #{Status}</if>
+<if test="Name!=null">,Warehouse_Name = #{Name}</if>
+<if test="Code!=null">,Warehouse_Code = #{Code}</if>
+<if test="Address!=null">,Warehouse_Address = #{Address}</if>
+<if test="Memo!=null">,Warehouse_Memo = #{Memo}</if>
+<if test="BaseInfoID!=null">,Warehouse_BaseInfoID = #{BaseInfoID}</if>
+
 		<where>
 			Warehouse_ID= #{ID} 
 		</where>

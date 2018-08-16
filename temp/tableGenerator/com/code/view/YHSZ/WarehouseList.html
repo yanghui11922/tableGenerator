@@ -54,7 +54,7 @@
                     setStatus(this,val)
                 },
                 modify: function (flag) {
-                    var url = "../Admin/Warehouse/addWarehouse.html?";
+                    var url = "../Admin/YHSZ/addWarehouse.html?";
                     if(flag==0){//新增
                         url+= "id=0";
                     }else{//修改
@@ -65,7 +65,7 @@
                     modifyShow(this,url,"80%","80%","Warehouse",true);
                 },
                  view:function(row, tr, field){//慧姐提供
-                    var url = "../Admin/Warehouse/addWarehouse.html?";
+                    var url = "../Admin/YHSZ/addWarehouse.html?";
                     url+= "id="+row.iD;
                     url+= "&viewflag=1";//查看标志，页面全部设置成只读
                     modifyShow(this,url,"80%","80%","Warehouse",true);
