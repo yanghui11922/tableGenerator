@@ -104,6 +104,9 @@ public class HtmlListGenerator implements Globles {
             ddb.setMethodAppend(CommonUtil.getOutputColumnName(tableInfoBean
                 .getColumnName(), true));
             ddb.setComment(tableInfoBean.getComment());
+            ddb.setXame(CommonUtil.getXName(tableInfoBean.getColumnName()));
+            ddb.setCharOctetLength(tableInfoBean.getCharOctetLength());
+            ddb.setNullAble(tableInfoBean.isNullAble());
 
             fieldList.add(ddb);
             
@@ -130,6 +133,8 @@ public class HtmlListGenerator implements Globles {
         rootMap.put("fieldList", fieldList);
         rootMap.put("importList", importList);
         rootMap.put("columnList", columnList);
+        
+        //rootMap.put("xName",temp);
     }
 
     private static String getDomainName(String tableName) {
