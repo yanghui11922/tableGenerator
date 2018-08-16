@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.code.dao.read.ReadWarehouseMapper">
+	<!-- 返回的map -->
+	<resultMap id="warehouse" type="com.code.domain.Warehouse">
+		<result property="ID" column="Warehouse_ID" />
+		<result property="CreateTime" column="Warehouse_CreateTime" />
+		<result property="ModifyTime" column="Warehouse_ModifyTime" />
+		<result property="Status" column="Warehouse_Status" />
+		<result property="Name" column="Warehouse_Name" />
+		<result property="Code" column="Warehouse_Code" />
+		<result property="Address" column="Warehouse_Address" />
+		<result property="Memo" column="Warehouse_Memo" />
+		<result property="BaseInfoID" column="Warehouse_BaseInfoID" />
+	</resultMap>
+	<!-- sql查询语句-->
+	<sql id="sql">
+		Warehouse_ID,Warehouse_CreateTime,Warehouse_ModifyTime,Warehouse_Status,Warehouse_Name,Warehouse_Code,Warehouse_Address,Warehouse_Memo,Warehouse_BaseInfoID
+	</sql>
+	<!-- sql查询条件-->
+	<sql id="where">
+		1=1 
+		<if test="ID!=null">
+				 and Warehouse_ID = #{ID}
+</if>
+<if test="CreateTime!=null">
+				 and Warehouse_CreateTime = #{CreateTime}
+</if>
+<if test="ModifyTime!=null">
+				 and Warehouse_ModifyTime = #{ModifyTime}
+</if>
+<if test="Status!=null">
+				 and Warehouse_Status = #{Status}
+</if>
+<if test="Name!=null">
+				 and Warehouse_Name = #{Name}
+</if>
+<if test="Code!=null">
+				 and Warehouse_Code = #{Code}
+</if>
+<if test="Address!=null">
+				 and Warehouse_Address = #{Address}
+</if>
+<if test="Memo!=null">
+				 and Warehouse_Memo = #{Memo}
+</if>
+<if test="BaseInfoID!=null">
+				 and Warehouse_BaseInfoID = #{BaseInfoID}
+</if>
+
+		<!-- 这边要数据自己处理 -->
+		<if test="search != null">
+			and (
+				Warehouse_ID like binary CONCAT(CONCAT('%', #{search,jdbcType=VARCHAR}),'%') or 
+				Warehouse_CreateTime like binary CONCAT(CONCAT('%', #{search,jdbcType=VARCHAR}),'%') or 
+				Warehouse_ModifyTime like binary CONCAT(CONCAT('%', #{search,jdbcType=VARCHAR}),'%') or 
+				Warehouse_Status like binary CONCAT(CONCAT('%', #{search,jdbcType=VARCHAR}),'%') or 
+				Warehouse_Name like binary CONCAT(CONCAT('%', #{search,jdbcType=VARCHAR}),'%') or 
+				Warehouse_Code like binary CONCAT(CONCAT('%', #{search,jdbcType=VARCHAR}),'%') or 
+				Warehouse_Address like binary CONCAT(CONCAT('%', #{search,jdbcType=VARCHAR}),'%') or 
+				Warehouse_Memo like binary CONCAT(CONCAT('%', #{search,jdbcType=VARCHAR}),'%') or 
+				Warehouse_BaseInfoID like binary CONCAT(CONCAT('%', #{search,jdbcType=VARCHAR}),'%') or 
+				
+				1 != 1
+			)
+		</if>
+	</sql>
+	<!-- 根据ID 查找-->
+	<select id="findById" resultMap="warehouse" parameterType="long">
+		SELECT
+		<include refid="sql"></include>
+		FROM t_warehouse
+		<where>
+			Warehouse_ID = #{_parameter} 
+		</where>
+	</select>
+	<!-- 根据条件 查找-->
+	<select id="query"  resultMap="warehouse"
+		parameterType="java.util.Map">
+		SELECT
+		<include refid="sql"></include>
+		FROM t_warehouse
+		<where>
+			<include refid="where"></include>
+		</where>
+	
+	</select>
+	<!-- 根据条件总数-->
+	<select id="queryCount" parameterType="map" resultType="int">
+		SELECT
+			Count(1)
+			FROM t_warehouse
+			<where>
+				<include refid="where"></include>
+			</where>
+	</select>
+
+
+
+</mapper>

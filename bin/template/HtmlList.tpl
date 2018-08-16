@@ -87,25 +87,15 @@
             'use strict';
             (function() {
                 var columns=[
-                    {
-                        field: 'state',
-                        checkbox:true
-                    },
-                    {
-                        title: '编号',
+                    <#list fieldList as field>
+			        <#if field.nullAble == false>
+			        {
+                        title: '${field.xame}',
                         align: 'center',
-                        field: 'iD',
+                        field: '${field.comment}',
                     },
-                    {
-                        title: '创建时间',
-                        align: 'center',
-                        field: 'createTime',
-                    },
-                    {
-                        title: '修改时间',
-                        align: 'center',
-                        field: 'modifyTime',
-                    },
+			        </#if>
+			        </#list>
                     {
                         title: getChangHead("类型","status",[{"id":88,"title":"删除"},{"id":1,"title":"正常"}]),
                         align: 'center',
