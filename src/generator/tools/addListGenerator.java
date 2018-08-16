@@ -10,6 +10,7 @@ import generator.util.CommentUtil;
 import generator.util.CommonUtil;
 import generator.util.DateUtil;
 import generator.util.FileUtil;
+import generator.util.PropertyFileReader;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -21,20 +22,28 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Map.Entry;
 
 import org.apache.commons.io.FileUtils;
 
 public class addListGenerator implements Globles {
+	 private static Properties property = null;
+
+	    static {
+	        if (null == property) {
+	            property = PropertyFileReader.getProperties("config.tbldef");
+	        }
+	    }
 
     public static void genaratorEntity(Configuration cfg,
         Entry<String, List<TableInfoBean>> tableInfo) throws IOException,
         TemplateException {
         BufferedWriter writer = null;
-
+        String viewPathName = property.getProperty("viewPathName");
         try {
         	  String _package=CommonUtil.getHtmlListOutPutPath();
-            String path =_package  +"/"+ getDomainName(tableInfo.getKey()) +"/add"
+            String path =_package  +"/"+viewPathName+"/add"
                 + getDomainName(tableInfo.getKey()) + ".html";
 
             boolean fileb=FileUtil.mkdir(path);

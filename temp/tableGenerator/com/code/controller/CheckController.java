@@ -120,7 +120,7 @@ public class CheckController extends BaseController {
             tempObj=CheckService.update(obj);
         }
         returnMap.put("code", tempObj!=null?0:-1);
-        returnMap.put("message", tempObj!=null?"修改成功":"修改失败");
+        returnMap.put("message", tempObj!=null?"操作成功":"操作失败");
         RabbitUtil.getInstance().OperationLog(request.getHeader("Token"),"修改【Check-modifyCheck-"+obj.getID()+"】内容",ReadOnlineService,OperationService,RabbitTemplate,ReadUserService);
         return returnMap;
     }
