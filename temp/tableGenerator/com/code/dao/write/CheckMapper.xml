@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.code.dao.write.CheckMapper">
+	<sql id="sql">
+		Check_ID,Check_CreateTime,Check_ModifyTime,Check_Status,Check_AdminID,Check_Administrator,Check_WarehouseID,Check_Name,Check_Time,Check_Memo,Check_StoreID,Check_AdjustStatus,Check_Operator,Check_Updater
+	</sql>
+	<sql id="where">
+		1=1 
+		<if test="ID!=null">
+				 and Check_ID = #{ID}
+</if>
+<if test="CreateTime!=null">
+				 and Check_CreateTime = #{CreateTime}
+</if>
+<if test="ModifyTime!=null">
+				 and Check_ModifyTime = #{ModifyTime}
+</if>
+<if test="Status!=null">
+				 and Check_Status = #{Status}
+</if>
+<if test="AdminID!=null">
+				 and Check_AdminID = #{AdminID}
+</if>
+<if test="Administrator!=null">
+				 and Check_Administrator = #{Administrator}
+</if>
+<if test="WarehouseID!=null">
+				 and Check_WarehouseID = #{WarehouseID}
+</if>
+<if test="Name!=null">
+				 and Check_Name = #{Name}
+</if>
+<if test="Time!=null">
+				 and Check_Time = #{Time}
+</if>
+<if test="Memo!=null">
+				 and Check_Memo = #{Memo}
+</if>
+<if test="StoreID!=null">
+				 and Check_StoreID = #{StoreID}
+</if>
+<if test="AdjustStatus!=null">
+				 and Check_AdjustStatus = #{AdjustStatus}
+</if>
+<if test="Operator!=null">
+				 and Check_Operator = #{Operator}
+</if>
+<if test="Updater!=null">
+				 and Check_Updater = #{Updater}
+</if>
+
+	</sql>
+
+	<!-- 插入数据 -->
+	<insert id="insert" parameterType="com.code.domain.Check"  useGeneratedKeys="true">
+		insert into t_check( <include refid="sql"></include> )
+		values(
+				#{ID},
+now(),
+now(),
+#{Status},
+#{AdminID},
+#{Administrator},
+#{WarehouseID},
+#{Name},
+#{Time},
+#{Memo},
+#{StoreID},
+#{AdjustStatus},
+#{Operator},
+#{Updater}
+				)
+	</insert>
+	<update id="update" parameterType="com.code.domain.Check">
+		update t_check set
+		 Check_ModifyTime=now
+		 <if test="Status!=null">,Check_Status = #{Status}</if>
+<if test="AdminID!=null">,Check_AdminID = #{AdminID}</if>
+<if test="Administrator!=null">,Check_Administrator = #{Administrator}</if>
+<if test="WarehouseID!=null">,Check_WarehouseID = #{WarehouseID}</if>
+<if test="Name!=null">,Check_Name = #{Name}</if>
+<if test="Time!=null">,Check_Time = #{Time}</if>
+<if test="Memo!=null">,Check_Memo = #{Memo}</if>
+<if test="StoreID!=null">,Check_StoreID = #{StoreID}</if>
+<if test="AdjustStatus!=null">,Check_AdjustStatus = #{AdjustStatus}</if>
+<if test="Operator!=null">,Check_Operator = #{Operator}</if>
+<if test="Updater!=null">,Check_Updater = #{Updater}</if>
+
+		<where>
+			Check_ID= #{ID} 
+		</where>
+	</update>
+
+
+	<!-- 根据编号删除-->
+	<update id="deleteById" parameterType="com.code.domain.Check">
+		update t_check set Check_AdjustStatus=88 where Check_ID = #{_parameter} 
+	</update>
+
+	<!-- 根据编号恢复-->
+	<update id="recoverByID" parameterType="com.code.domain.Check">
+		update t_check set Check_AdjustStatus=1 where Check_ID = #{_parameter} 
+	</update>
+
+	<!-- 根据条件删除-->
+	<update id="deleteByCondition" parameterType="com.code.domain.Check">
+		update t_check set Check_AdjustStatus=88 
+		<where>
+			<include refid="where"></include>
+		</where>
+	</update>
+
+	<!-- 根据条件恢复-->
+	<update id="recoverByCondition" parameterType="com.code.domain.Check">
+		update t_check set Check_AdjustStatus=1 
+		<where>
+			<include refid="where"></include>
+		</where>
+	</update>
+
+
+</mapper>

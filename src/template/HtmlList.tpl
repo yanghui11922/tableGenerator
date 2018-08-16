@@ -54,7 +54,7 @@
                     setStatus(this,val)
                 },
                 modify: function (flag) {
-                    var url = "../Admin/${classdef}/add${classdef}.html?";
+                    var url = "../Admin/${viewPathName}/add${classdef}.html?";
                     if(flag==0){//新增
                         url+= "id=0";
                     }else{//修改
@@ -62,13 +62,13 @@
                         if(checkIsSelectionOne()){return};//用于只判断一条记录
                         url+= "id="+getRecordIDForFastJson($('#exampleTableEvents'));
                     }
-                    modifyShow(this,url,"100%","100%","${classdef}");
+                    modifyShow(this,url,"80%","80%","${classdef}",true);
                 },
                  view:function(row, tr, field){//慧姐提供
-                    var url = "../Admin/add${classdef}.html?";
+                    var url = "../Admin/${viewPathName}/add${classdef}.html?";
                     url+= "id="+row.iD;
                     url+= "&viewflag=1";//查看标志，页面全部设置成只读
-                    modifyShow(this,url,"100%","100%","${classdef}");
+                    modifyShow(this,url,"80%","80%","${classdef}",true);
                 }
             },
             mounted: function () {

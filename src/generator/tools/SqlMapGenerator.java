@@ -260,19 +260,20 @@ public class SqlMapGenerator {
         String updateSql = "";
 
         for (TableInfoBean tableInfoBean : tableInfo.getValue()) {
-        		if(!tableInfoBean.getColumnName().split("_")[1].equals("ID")&& !"CreateTime".equals(tableInfoBean.getColumnName().split("_")[1])) {
-        		 	if(tableInfoBean.getColumnName().split("_")[1].equals("ModifyTime")){
-	            		updateSql += tableInfoBean.getColumnName() + " = now(),";
-	                }else{
-	                	updateSql += tableInfoBean.getColumnName() + " = #{" + tableInfoBean.getColumnName().split("_")[1]+ "},";
-	             }
+        		if(!tableInfoBean.getColumnName().split("_")[1].equals("ID")&& !"CreateTime".equals(tableInfoBean.getColumnName().split("_")[1])&&!"ModifyTime".equals(tableInfoBean.getColumnName().split("_")[1])) {
+//        		 	if(tableInfoBean.getColumnName().split("_")[1].equals("ModifyTime")){
+//	            		updateSql += tableInfoBean.getColumnName() + " = now(),";
+//	                }else{
+//	                	updateSql += tableInfoBean.getColumnName() + " = #{" + tableInfoBean.getColumnName().split("_")[1]+ "},";
+//	             }
+        			updateSql+="<if test=\""+tableInfoBean.getColumnName().split("_")[1]+"!=null\">";
+        			updateSql += ","+tableInfoBean.getColumnName() + " = #{" + tableInfoBean.getColumnName().split("_")[1]+ "}";
+        			updateSql+="</if>\n";
         		}
     
             
-            
-            
         }
-        updateSql = updateSql.substring(0, updateSql.length() - 1);
+       // updateSql = updateSql.substring(0, updateSql.length() - 1);
 
         return updateSql;
     }

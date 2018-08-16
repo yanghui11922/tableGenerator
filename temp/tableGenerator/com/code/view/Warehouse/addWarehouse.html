@@ -1,3 +1,4 @@
+<<<<<<< HEAD:temp/tableGenerator/com/code/view/Warehouse/addWarehouse.html
 <!DOCTYPE html>
 <html>
 <head>
@@ -133,3 +134,181 @@
 </script>
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/web/include.js?v=1.0.5"></script>
+</head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content" id="app">
+     <!-- loading 固定格式不要删除1-->
+    <div id="overlay" style="background:#000;filter:alpha(opacity=50);opacity:0.5;display:none;position:absolute;top:0px;left:0px;width:100%;height:100%;z-index:100;display:none;"><div class="sk-spinner sk-spinner-double-bounce" style="margin-top: 300px;"><div class="sk-double-bounce1"></div> <div class="sk-double-bounce2"></div></div></div>
+    <!-- Panel Other -->
+    <div class="ibox float-e-margins">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <div class="form-horizontal">
+
+														    <div class="hr-line-dashed" ></div>
+	                            <div class="form-group">
+	                                <label class="col-sm-2 control-label" v-text="status"></label>
+	                                <div class="col-sm-10">
+	                                    <input type="text" v-model="data.status" class="form-control"  >
+	                            </div>
+                            </div>
+							    <div class="hr-line-dashed" ></div>
+	                            <div class="form-group">
+	                                <label class="col-sm-2 control-label" v-text="adminID"></label>
+	                                <div class="col-sm-10">
+	                                    <input type="text" v-model="data.adminID" class="form-control"  >
+	                            </div>
+                            </div>
+							    <div class="hr-line-dashed" ></div>
+	                            <div class="form-group">
+	                                <label class="col-sm-2 control-label" v-text="administrator"></label>
+	                                <div class="col-sm-10">
+	                                    <input type="text" v-model="data.administrator" class="form-control"  maxlength="20"  >
+	                            </div>
+                            </div>
+							    <div class="hr-line-dashed" ></div>
+	                            <div class="form-group">
+	                                <label class="col-sm-2 control-label" v-text="warehouseID"></label>
+	                                <div class="col-sm-10">
+	                                    <input type="text" v-model="data.warehouseID" class="form-control"  >
+	                            </div>
+                            </div>
+							    <div class="hr-line-dashed" ></div>
+	                            <div class="form-group">
+	                                <label class="col-sm-2 control-label" v-text="name"></label>
+	                                <div class="col-sm-10">
+	                                    <input type="text" v-model="data.name" class="form-control"  maxlength="50"  >
+	                            </div>
+                            </div>
+							    <div class="hr-line-dashed" ></div>
+	                            <div class="form-group">
+	                                <label class="col-sm-2 control-label" v-text="time"></label>
+	                                <div class="col-sm-10">
+	                                    <input type="text" v-model="data.time" class="form-control"  >
+	                            </div>
+                            </div>
+							    <div class="hr-line-dashed" ></div>
+	                            <div class="form-group">
+	                                <label class="col-sm-2 control-label" v-text="memo"></label>
+	                                <div class="col-sm-10">
+	                                    <input type="text" v-model="data.memo" class="form-control"  maxlength="100"  >
+	                            </div>
+                            </div>
+							    <div class="hr-line-dashed" ></div>
+	                            <div class="form-group">
+	                                <label class="col-sm-2 control-label" v-text="storeID"></label>
+	                                <div class="col-sm-10">
+	                                    <input type="text" v-model="data.storeID" class="form-control"  >
+	                            </div>
+                            </div>
+							    <div class="hr-line-dashed" ></div>
+	                            <div class="form-group">
+	                                <label class="col-sm-2 control-label" v-text="adjustStatus"></label>
+	                                <div class="col-sm-10">
+	                                    <input type="text" v-model="data.adjustStatus" class="form-control"  maxlength="1"  >
+	                            </div>
+                            </div>
+							    <div class="hr-line-dashed" ></div>
+	                            <div class="form-group">
+	                                <label class="col-sm-2 control-label" v-text="operator"></label>
+	                                <div class="col-sm-10">
+	                                    <input type="text" v-model="data.operator" class="form-control"  maxlength="20"  >
+	                            </div>
+                            </div>
+							    <div class="hr-line-dashed" ></div>
+	                            <div class="form-group">
+	                                <label class="col-sm-2 control-label" v-text="updater"></label>
+	                                <div class="col-sm-10">
+	                                    <input type="text" v-model="data.updater" class="form-control"  maxlength="20"  >
+	                            </div>
+                            </div>
+                          
+                           <!--  <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <div class="col-sm-4 col-sm-offset-2">
+                                    <button class="btn btn-primary" @click="save" type="submit">保存内容</button>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var tempApp="";
+    window.onload=function () {
+        var app = new Vue({
+            el: "#app",
+            data: {
+                 viewflag:getUrlKey("viewflag")=="1"?false:true,//查看标志
+                    status:"状态 【正常：1   删除：88】",
+                    adminID:"仓库管理员",
+                    administrator:"管理员(冗余字段)",
+                    warehouseID:"仓库手机(冗余字段)",
+                    name:"仓库名字",
+                    time:"盘点时间",
+                    memo:"备注",
+                    storeID:"盘点",
+                    adjustStatus:"是否调整 0 否  1 是",
+                    operator:"操作人",
+                    updater:"更新人",
+                data:{
+                    iD:getUrlKey("id"),
+                    	status:0,
+                    	adminID:0,
+                    	administrator:0,
+                    	warehouseID:0,
+                    	name:0,
+                    	time:0,
+                    	memo:0,
+                    	storeID:0,
+                    	adjustStatus:0,
+                    	operator:0,
+                    	updater:0,
+                }
+            },
+            methods: {
+                initDocument: function () {//一些特殊的处理如查看时全部只读   时间控件初始化等
+                    if(this.viewflag){//查看goodsDataList
+                        $('input,select,textarea').attr('disabled',true);//
+                        //setTimeout("$('#goodsDataList tbody tr td input').attr('readonly',true)",200);//针对有子表列表编辑时可放开此句
+                    }
+                },
+                save: function () {
+                    if(validate()){return};
+                    savaData(this,"../Check/modifyCheck")
+                }
+            },
+            mounted: function () {
+                tempApp=this;
+                if(this.data.iD!=0){
+                    findByID(this,this.data.iD,"../Check/findCheck/")
+                }
+                bindImgError();
+                this.initDocument();
+            }
+        })
+    }
+    function validate(){
+        var message="不允许为空。"
+        if(!chechIsUnll(tempApp.data.adjustStatus)){
+            error(tempApp.adjustStatus+message);
+            return true;
+        }
+        return false;
+    }
+</script>
+</body>
+</html>
+>>>>>>> 4cb73e4e09170ed35096374a81c0430f3cfd9240:temp/tableGenerator/com/code/view/Check/addCheck.html
